@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MonopolyGame.Model.Interfaces;
 
 namespace MonopolyGame.Model.Players
 {
-    public class Player
+    public class Player: IPlayer
     {
         public const int INITIAL_PLAYER_MONEY = 1500;
         public const int TOTAL_NUMBER_OF_TILES = 40;

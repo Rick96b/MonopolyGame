@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.Model
 {
-    internal class Board
+    public class Board
     {
     }
 }

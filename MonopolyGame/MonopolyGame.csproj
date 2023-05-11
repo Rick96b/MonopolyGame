@@ -24,7 +24,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\Enums\" />
-    <Folder Include="Model\Interfaces\" />
     <Folder Include="Model\Tiles\" />
     <Folder Include="View\" />
     <Folder Include="Controller\" />
