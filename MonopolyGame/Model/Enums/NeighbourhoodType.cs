@@ -1,6 +1,6 @@
 ﻿namespace MonopolyGame.Model.Enums
 {
-    public enum NighbourhoodType
+    public enum NeighbourhoodTypes
     {
         Brown,
         Blue,
@@ -9,7 +9,7 @@
         Red,
         Yellow,
         Green,
-        Purple,
+        DarkBlue,
         Station,
         Utility
     }
