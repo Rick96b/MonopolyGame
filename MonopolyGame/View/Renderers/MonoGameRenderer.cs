@@ -12,7 +12,7 @@ namespace MonopolyGame.View.Renderers
 {
     public class MonoGameRenderer: AbstractRenderer
     {
-        private ContentManager Content = EntryPoint.game.Content;
+        private ContentManager Content = EntryPoint.Game.Content;
         private SpriteBatch SpriteBatch;
 
         public Button BuyButton;
@@ -70,7 +70,7 @@ namespace MonopolyGame.View.Renderers
 
         public override void DrawBoard()
         {
-            this.SpriteBatch = EntryPoint.game.SpriteBatch;
+            this.SpriteBatch = EntryPoint.Game.spriteBatch;
 
             Background.Draw(SpriteBatch);
 
@@ -107,16 +107,16 @@ namespace MonopolyGame.View.Renderers
             {
                 if(currentPlayer.sprite.Rectangle.Y > 606 && currentPlayer.sprite.Rectangle.X > 30)
                 {
-                    currentPlayer.sprite.Rectangle.X -= (int)(Velocity * EntryPoint.game.Elapsed);
+                    currentPlayer.sprite.Rectangle.X -= (int)(Velocity * EntryPoint.Game.Elapsed);
                 } else if (currentPlayer.sprite.Rectangle.Y > 30 && currentPlayer.sprite.Rectangle.X <= 50)
                 {
-                    currentPlayer.sprite.Rectangle.Y -= (int)(Velocity * EntryPoint.game.Elapsed);
+                    currentPlayer.sprite.Rectangle.Y -= (int)(Velocity * EntryPoint.Game.Elapsed);
                 } else if (currentPlayer.sprite.Rectangle.Y <= 50 && currentPlayer.sprite.Rectangle.X < 650)
                 {
-                    currentPlayer.sprite.Rectangle.X += (int)(Velocity * EntryPoint.game.Elapsed);
+                    currentPlayer.sprite.Rectangle.X += (int)(Velocity * EntryPoint.Game.Elapsed);
                 } else if (currentPlayer.sprite.Rectangle.Y < 680 && currentPlayer.sprite.Rectangle.X >= 620)
                 {
-                    currentPlayer.sprite.Rectangle.Y += (int)(Velocity * EntryPoint.game.Elapsed);
+                    currentPlayer.sprite.Rectangle.Y += (int)(Velocity * EntryPoint.Game.Elapsed);
                 }
             }
         }

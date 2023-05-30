@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MonopolyGame.Model.Interfaces;
+using MonopolyGame.Model.Tiles;
 
 namespace MonopolyGame.Model.Players
 {
@@ -43,7 +44,7 @@ namespace MonopolyGame.Model.Players
             this.Money -= amount;
         }
 
-
+        public List<Street> Streets { get; private set; } = new List<Street>();
 
         public int CurrentPosition { get; private set; } = 0;
 

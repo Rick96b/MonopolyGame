@@ -124,7 +124,7 @@ namespace MonopolyGame.View.Tiles
 
             for(int i = 0; i < 40; i++)
             {
-                tilesColliders[i] = CreateTileColliderRectangle(i, xIncrement, WINDOW_WIDTH, WINDOW_HEIGHT)
+                tilesColliders[i] = CreateTileColliderRectangle(i, xIncrement, WINDOW_WIDTH, WINDOW_HEIGHT);
             }
 
             return tilesColliders;

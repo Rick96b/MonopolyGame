@@ -68,5 +68,15 @@ namespace MonopolyGame.Model
                 new Street(39, "Улица Арбат", NeighbourhoodTypes.DarkBlue, 400, 50)
             };
         }
+
+        public static void AddStreetToPlayer(int streetIndex, int playerIndex)
+        {
+            Street currentStreet = (Street)allTiles[streetIndex];
+            currentStreet.Owner = players[playerIndex];
+
+            players[playerIndex].Streets.Add(currentStreet);
+            players[playerIndex].DecrementMoney(currentStreet.Price);
+
+        }
     }
 }
