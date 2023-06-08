@@ -16,6 +16,7 @@ namespace MonopolyGame.View.Renderers
         private SpriteBatch SpriteBatch;
 
         public Button BuyButton;
+        public Button UpgradeButton;
         public Button RollButton;
         public Button EndTurnButton;
 
@@ -43,6 +44,7 @@ namespace MonopolyGame.View.Renderers
             this.Background = TilesInitializer.CreateBackground(Content);
 
             this.BuyButton = TilesInitializer.CreateBuyButton(Content);
+            this.UpgradeButton = TilesInitializer.CreateUpgradeButton(Content);
             this.RollButton = TilesInitializer.CreateRollButton(Content);
             this.EndTurnButton = TilesInitializer.CreateEndTurnButton(Content);
 
@@ -77,6 +79,7 @@ namespace MonopolyGame.View.Renderers
             BuyButton.Draw(SpriteBatch);
             RollButton.Draw(SpriteBatch);
             EndTurnButton.Draw(SpriteBatch);
+            UpgradeButton.Draw(SpriteBatch);
 
             FirstDice.Draw(SpriteBatch);
             SecondDice.Draw(SpriteBatch);
@@ -92,8 +95,8 @@ namespace MonopolyGame.View.Renderers
             }
 
             SpriteBatch.DrawString(font, NotificationText, new Vector2(105, 105), Color.Black);
-            SpriteBatch.DrawString(font, PlayerOneMoney, new Vector2(150, 525), Color.Black);
-            SpriteBatch.DrawString(font, PlayerTwoMoney, new Vector2(150, 560), Color.Black);
+            SpriteBatch.DrawString(font, PlayerOneMoney, new Vector2(125, 485), Color.Black);
+            SpriteBatch.DrawString(font, PlayerTwoMoney, new Vector2(125, 515), Color.Black);
         }
 
         public override void MovePlayer(int playerIndex, int currentPosition, int newPosition)

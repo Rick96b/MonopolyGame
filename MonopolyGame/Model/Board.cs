@@ -46,7 +46,7 @@ namespace MonopolyGame.Model
                 new ChanceCard(17, "Активности университета"),
                 new Street(18, "Momo", NeighbourhoodTypes.Orange, 175, 70),
                 new Street(19, "The Barbara", NeighbourhoodTypes.Orange, 200, 70),
-                new SpecialTile(20, "Бесплатная парковка"),
+                new SpecialTile(20, "Бесплатная стоянка"),
                 new Street(21, "Tako Mago", NeighbourhoodTypes.Red, 225, 85),
                 new ChanceCard(22, "Шанс"),
                 new Street(23, "Estory", NeighbourhoodTypes.Red, 225, 100),
@@ -77,6 +77,14 @@ namespace MonopolyGame.Model
             players[playerIndex].Streets.Add(currentStreet);
             players[playerIndex].DecrementMoney(currentStreet.Price);
 
+        }
+
+        public static void UpgradeStreet(int streetIndex, int playerIndex)
+        {
+            Street currentStreet = (Street)allTiles[streetIndex];
+
+            currentStreet.Upgrade(1.5);
+            players[playerIndex].DecrementMoney(currentStreet.Price);
         }
     }
 }

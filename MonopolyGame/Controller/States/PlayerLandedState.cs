@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Input;
 using MonopolyGame.Model;
+using MonopolyGame.Model.Enums;
 using MonopolyGame.Model.Tiles;
 using MonopolyGame.View.Tiles;
 
@@ -36,7 +37,16 @@ namespace MonopolyGame.Controller.States
                         EntryPoint.Game.renderer.NotificationText += "\nУлица свободна, но у вас недостаточно средств!";
                     else
                         ActivateBuyButton(playerCurrentPosition);
-                } else
+                }
+                else if (currentTileAsStreet.Owner == Board.players[playerIndex] && 
+                    currentTileAsStreet.Neighbourhood != NeighbourhoodTypes.ElectricityStation &&
+                    currentTileAsStreet.Neighbourhood != NeighbourhoodTypes.WaterStation &&
+                    currentTileAsStreet.Neighbourhood != NeighbourhoodTypes.JunkFood)
+                {
+                    EntryPoint.Game.renderer.NotificationText += "\nВы можете увеличить ренту улицы в полтора раза!\nСтоимость: " + currentTileAsStreet.Price;
+                    ActivateUpgradeButton(playerCurrentPosition);
+                }
+                else
                 {
                     StateMachine.ChangeState();
                 }
@@ -53,11 +63,8 @@ namespace MonopolyGame.Controller.States
 
                 if(currentTileAsSpecial.Index == 30)
                 {
-                    EntryPoint.Game.renderer.MovePlayer(Board.CurrentPlayerIndex, 30, Board.players[playerIndex].CurrentPosition);
+                    EntryPoint.Game.renderer.MovePlayer(Board.CurrentPlayerIndex, 30, Board.players[playerIndex].CurrentPosition);               
                 }
-
-                if(!EntryPoint.Game.renderer.shouldPlayerMove)
-                    Board.players[playerIndex].SetPosition(10);
             }
             ActivateEndTurn();
         }
@@ -109,5 +116,33 @@ namespace MonopolyGame.Controller.States
                 StateMachine.ChangeState();
             }
         }
+
+        private void ActivateUpgradeButton(int playerCurrentPosition)
+        {
+            Button UpgradeButton = EntryPoint.Game.renderer.UpgradeButton;
+            int currentPlayer = Board.CurrentPlayerIndex;
+            bool mouseOverBuy = UpgradeButton.sprite.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);
+            if (mouseOverBuy)
+            {
+                UpgradeButton.ChangeToHoverImage();
+            }
+            else
+            {
+                UpgradeButton.ChangeToUnactiveImage();
+            }
+
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed && mouseOverBuy)
+            {
+                UpgradeButton.ChangeToClickedImage();
+                EntryPoint.Game.renderer.NotificationText = "Заведение улучшено";
+                Board.UpgradeStreet(playerCurrentPosition, currentPlayer);
+                EntryPoint.Game.renderer.ShowTileOwner(currentPlayer, playerCurrentPosition);
+                EntryPoint.Game.renderer.PlayerOneMoney = Board.players[0].Money + "$";
+                EntryPoint.Game.renderer.PlayerTwoMoney = Board.players[1].Money + "$";
+
+                StateMachine.ChangeState();
+            }
+        }
+
     }
 }

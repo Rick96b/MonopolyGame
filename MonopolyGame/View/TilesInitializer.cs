@@ -45,6 +45,18 @@ namespace MonopolyGame.View.Tiles
             return new Button(endTurnButtonSprite, endTurnActive, endTurnActive, endTurnActive);
         }
 
+        public static Button CreateUpgradeButton(ContentManager content)
+        {
+            Texture2D UpgradeButtonActive = content.Load<Texture2D>("UpgradeButton");
+            Texture2D UpgradeButtonHover = content.Load<Texture2D>("UpgradeHover");
+            Texture2D UpgradeButtonClicked = content.Load<Texture2D>("UpgradeClicked");
+            Rectangle UpgradeButtonRectangle = new Rectangle(108, 555, 80, 40);
+
+            Sprite UpgradeButtonSprite = new Sprite(UpgradeButtonRectangle, UpgradeButtonActive);
+
+            return new Button(UpgradeButtonSprite, UpgradeButtonActive, UpgradeButtonHover, UpgradeButtonClicked);
+        }
+
         public static Dice CreateDice(ContentManager content, int index)
         {
             Texture2D[] diceImages = new Texture2D[6];

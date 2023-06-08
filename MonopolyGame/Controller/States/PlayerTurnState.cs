@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using MonopolyGame.Model;
 using MonopolyGame.View.Tiles;
 
@@ -17,6 +18,7 @@ namespace MonopolyGame.Controller.States
             {
                 Board.players[Board.CurrentPlayerIndex].TurnsInJail--;
                 Board.CurrentPlayerIndex = (Board.CurrentPlayerIndex + 1) % Board.players.Count;
+                Board.players[Board.CurrentPlayerIndex].SetPosition(10);
             }
             Button rollButton = EntryPoint.Game.renderer.RollButton;
             EntryPoint.Game.renderer.NotificationText = "Ход " + (Board.CurrentPlayerIndex + 1).ToString() + "'го игрока";

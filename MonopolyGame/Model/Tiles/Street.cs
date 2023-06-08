@@ -23,6 +23,7 @@ namespace MonopolyGame.Model.Tiles
         public Player Owner { get; set; }
         public int Price { get; set; }
         public int Rent { get; set; }
+        public bool isUpgraded { get; set; }
 
         public override string ActOnPlayer(Player player)
         {
@@ -67,6 +68,12 @@ namespace MonopolyGame.Model.Tiles
                 this.Owner.IncrementMoney(this.Rent);
                 return String.Format("\n {0} Владеет улицей {1}\nВы заплатили ему {2}", player.Index, this.Name, this.Rent);
             }
+        }
+
+        public void Upgrade(double ratio)
+        {
+            this.Rent = (int)(this.Rent * ratio);
+            isUpgraded = true;
         }
     }
 }

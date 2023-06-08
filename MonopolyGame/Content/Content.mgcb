@@ -25,18 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:../../../../../Рабочий стол/board.png;board.png
 
-#begin ../../../../../Рабочий стол/board.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../../../../Рабочий стол/board.png;board.png
-
 #begin ../../../../../Рабочий стол/Buy.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -132,6 +120,42 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:../../../../../Рабочий стол/RollHover.png;RollHover.png
+
+#begin ../../../../../Рабочий стол/UpgradeButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../../../Рабочий стол/UpgradeButton.png;UpgradeButton.png
+
+#begin ../../../../../Рабочий стол/UpgradeClicked.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../../../Рабочий стол/UpgradeClicked.png;UpgradeClicked.png
+
+#begin ../../../../../Рабочий стол/UpgradeHover.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../../../Рабочий стол/UpgradeHover.png;UpgradeHover.png
 
 #begin 1.png
 /importer:TextureImporter
