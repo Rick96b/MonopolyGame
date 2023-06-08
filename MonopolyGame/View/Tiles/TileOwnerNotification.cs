@@ -24,7 +24,7 @@ namespace MonopolyGame.View.Tiles
         public void setOwner(ContentManager content, int ownerIndex)
         {
             this.IsActive = true;
-            this.sprite.Image = content.Load<Texture2D>("Owner" + ownerIndex.ToString());
+            this.sprite.Image = content.Load<Texture2D>("pawn" + ownerIndex.ToString());
         }
 
         public void Draw(SpriteBatch _spriteBatch)

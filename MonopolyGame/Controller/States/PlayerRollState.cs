@@ -24,8 +24,8 @@ namespace MonopolyGame.Controller.States
             PlayerMoveState.PlayerOldPosition = currentPlayerPosition;
             EntryPoint.Game.renderer.FirstDice.ChangeDiceImage(firstDiceNumber);
             EntryPoint.Game.renderer.SecondDice.ChangeDiceImage(secondDiceNumber);
-            EntryPoint.Game.renderer.NotificationText = "Игрок " + (Board.CurrentPlayerIndex + 1) + "выкинул " + totalPositionToMove;
-            Board.players[currentPlayerPosition].SetPosition(currentPlayerPosition + totalPositionToMove);
+            EntryPoint.Game.renderer.NotificationText = "Игрок " + (Board.CurrentPlayerIndex + 1) + " выкинул " + totalPositionToMove;
+            Board.players[Board.CurrentPlayerIndex].SetPosition(currentPlayerPosition + totalPositionToMove);
 
             StateMachine.ChangeState();
         }

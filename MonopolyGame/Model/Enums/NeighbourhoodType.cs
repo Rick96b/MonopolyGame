@@ -10,7 +10,8 @@
         Yellow,
         Green,
         DarkBlue,
-        Station,
-        Utility
+        JunkFood,
+        WaterStation,
+        ElectricityStation
     }
 }

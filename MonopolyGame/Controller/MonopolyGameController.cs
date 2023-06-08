@@ -29,7 +29,7 @@ namespace MonopolyGame.Controller
 
         protected override void Initialize()
         {
-            renderer = new MonoGameRenderer();
+            this.renderer = new MonoGameRenderer();
             StateMachine.Initialize();
             StateMachine.CurrentState = StateMachine.States["InitialState"];
             StateMachine.CurrentState.Execute();
@@ -59,7 +59,7 @@ namespace MonopolyGame.Controller
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            StateMachine.CurrentState.Draw(renderer);
+            StateMachine.CurrentState.Draw(this.renderer);
             spriteBatch.End();
             base.Draw(gameTime);
         }

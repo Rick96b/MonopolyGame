@@ -28,15 +28,44 @@ namespace MonopolyGame.Model.Tiles
         {
             if (this.Owner == player)
             {
-                return "Вы уже владеете " + this.Name + ".";
+                return "\nВы уже владеете " + this.Name + ".";
             } else if (this.Owner == null)
             {
-                return this.Name + "доступна \nдля покупки.";
+                return "\n" + this.Name + " доступна для покупки.";
             } else
             {
+                if(this.Neighbourhood== NeighbourhoodTypes.JunkFood)
+                {
+                    int ratio = player.Streets
+                        .Where(street => street.Neighbourhood == NeighbourhoodTypes.JunkFood)
+                        .ToArray()
+                        .Length;
+
+                    player.DecrementMoney(this.Rent * (int)Math.Pow(2, ratio - 1));
+                    this.Owner.IncrementMoney(this.Rent * (int)Math.Pow(2, ratio - 1));
+                    return String.Format("\n {0} Владеет улицей {1}\nВы заплатили ему {2}", player.Index, this.Name, this.Rent * Math.Pow(2,ratio - 1));
+                }
+
+                else if(this.Neighbourhood == NeighbourhoodTypes.WaterStation)
+                {
+                    var rnd = new Random();
+                    player.DecrementMoney(this.Rent + rnd.Next(1, 8)*15);
+                    this.Owner.IncrementMoney(this.Rent + rnd.Next(1, 8) * 15);
+                    return String.Format("\n {0} Владеет общажным водопроводом {1}\nВы заплатили ему {2}", player.Index, this.Name, this.Rent + rnd.Next(1, 8) * 15);
+                }
+
+                else if (this.Neighbourhood == NeighbourhoodTypes.ElectricityStation)
+                {
+                    var rnd = new Random();
+                    player.DecrementMoney(this.Rent + rnd.Next(1, 8) * 15);
+                    this.Owner.IncrementMoney(this.Rent + rnd.Next(1, 8) * 15);
+                    return String.Format("\n {0} Владеет общажным светом {1}\nВы заплатили ему {2}", player.Index, this.Name, this.Rent + rnd.Next(1, 8) * 15);
+                }
+
+
                 player.DecrementMoney(this.Rent);
                 this.Owner.IncrementMoney(this.Rent);
-                return String.Format("{0} Владеет улицей {1}\nВы заплатили ему {2}", player.Index, this.Name, this.Rent);
+                return String.Format("\n {0} Владеет улицей {1}\nВы заплатили ему {2}", player.Index, this.Name, this.Rent);
             }
         }
     }

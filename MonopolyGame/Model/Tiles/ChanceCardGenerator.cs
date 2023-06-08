@@ -25,20 +25,20 @@ namespace MonopolyGame.Model.Tiles
         private static string BankIsGivingYouMoney(Player player)
         {
             player.IncrementMoney(BANK_MONEY_BONUS);
-            return "Банк даёт вам 200$!";
+            return "\nБанк даёт вам 200$!";
         }
 
         private static string YouArePrettyGivingBonus(Player player)
         {
             player.IncrementMoney(PRETTY_BONUS);
-            return "Вы выйграли конкурс красоты. \nПолучите 50$";
+            return "\nВы выйграли конкурс красоты. \nПолучите 50$";
         }
 
         private static string GiveAmountToOtherPlayers(Player player)
         {
             Board.players[Board.CurrentPlayerIndex].DecrementMoney(30);
             Board.players[(Board.CurrentPlayerIndex + 1) % 2].IncrementMoney(30);
-            return "Ты пожертвовал другим игрокам 30$";
+            return "\nТы пожертвовал другим игрокам 30$";
         }
 
         public static string GenerateRandomCart(Player player)

@@ -98,6 +98,7 @@ namespace MonopolyGame.View.Renderers
 
         public override void MovePlayer(int playerIndex, int currentPosition, int newPosition)
         {
+            shouldPlayerMove = true;
             PlayerUI currentPlayer = PlayersUI[playerIndex];
             TileDestination = TileColliders[newPosition];
             if(TileDestination.Contains(currentPlayer.sprite.Rectangle))

@@ -50,7 +50,7 @@ namespace MonopolyGame.Model.Players
 
         public int Index { get; private set; } = 0;
 
-        public bool IsInJail { get; private set; } = false;
+        public int TurnsInJail { get; set; } = 0;
 
         public int Money { get; private set; } = INITIAL_PLAYER_MONEY;
     }

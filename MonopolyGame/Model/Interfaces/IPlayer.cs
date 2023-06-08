@@ -10,7 +10,7 @@ namespace MonopolyGame.Model.Interfaces
     {
         int CurrentPosition { get; }
         int Index { get; }
-        bool IsInJail { get; }
+        int TurnsInJail { get; }
         int Money { get; }
         void SetPosition(int newPosition);
     }

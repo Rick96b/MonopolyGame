@@ -10,16 +10,24 @@ namespace MonopolyGame.Model.Tiles
 {
     public class Tax: Tile, ITile
     {
-        public int TaxAmount { get; private set; }
-        public Tax(int index, string name, int taxAmount):base(index, name)
+        public double TaxRatio { get; private set; }
+        public Tax(int index, string name, double taxRatio) :base(index, name)
         {
-            this.TaxAmount = taxAmount;
+            this.TaxRatio = taxRatio;
         }
 
         public override string ActOnPlayer(Player player)
         {
-            player.DecrementMoney(this.TaxAmount);
-            return this.Name + ": " + this.TaxAmount;
+            if (TaxRatio > 1)
+            {
+                player.DecrementMoney((int)(this.TaxRatio));
+                return "\n" + this.Name + ": " + this.TaxRatio;
+            }
+            else
+            {
+                player.DecrementMoney((int)(player.Money * this.TaxRatio));
+                return "\n" + this.Name + ": " + (int)(player.Money * this.TaxRatio);
+            }
         }
     }
 }

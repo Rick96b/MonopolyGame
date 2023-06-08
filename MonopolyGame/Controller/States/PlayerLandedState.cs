@@ -20,18 +20,22 @@ namespace MonopolyGame.Controller.States
 
             Tile currentTile = Board.allTiles[playerCurrentPosition];
 
-            EntryPoint.Game.renderer.NotificationText = "Игрок " + (playerIndex + 1) + "пришел на " + currentTile.Name;
+            EntryPoint.Game.renderer.NotificationText = "Игрок " + (playerIndex + 1) + " пришел на " + currentTile.Name;
             EntryPoint.Game.renderer.NotificationText += currentTile.ActOnPlayer(Board.players[playerIndex]);
             EntryPoint.Game.renderer.PlayerOneMoney = Board.players[0].Money + "$";
             EntryPoint.Game.renderer.PlayerTwoMoney = Board.players[1].Money + "$";
 
-
+            if (Board.players[playerIndex].Money < 0)
+                StateMachine.EndGame();
             if(currentTile is Street)
             {
                 var currentTileAsStreet = currentTile as Street;
                 if(currentTileAsStreet.Owner == null)
                 {
-                    ActivateBuyButton(playerCurrentPosition);
+                    if (Board.players[playerIndex].Money < currentTileAsStreet.Price)
+                        EntryPoint.Game.renderer.NotificationText += "\nУлица свободна, но у вас недостаточно средств!";
+                    else
+                        ActivateBuyButton(playerCurrentPosition);
                 } else
                 {
                     StateMachine.ChangeState();
@@ -49,8 +53,11 @@ namespace MonopolyGame.Controller.States
 
                 if(currentTileAsSpecial.Index == 30)
                 {
-                    EntryPoint.Game.renderer.MovePlayer(Board.CurrentPlayerIndex, 30, 10);
+                    EntryPoint.Game.renderer.MovePlayer(Board.CurrentPlayerIndex, 30, Board.players[playerIndex].CurrentPosition);
                 }
+
+                if(!EntryPoint.Game.renderer.shouldPlayerMove)
+                    Board.players[playerIndex].SetPosition(10);
             }
             ActivateEndTurn();
         }
@@ -58,7 +65,6 @@ namespace MonopolyGame.Controller.States
         private void ActivateEndTurn()
         {
             Button endTurnButton = EntryPoint.Game.renderer.EndTurnButton;
-            EntryPoint.Game.renderer.NotificationText = "Вы хотите закончить ход?";
 
             bool mouseOverEndTurn = endTurnButton.sprite.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);
             if (mouseOverEndTurn)
@@ -95,7 +101,7 @@ namespace MonopolyGame.Controller.States
             {
                 buyButton.ChangeToClickedImage();
                 EntryPoint.Game.renderer.NotificationText = "Имущество куплено";
-                Board.AddStreetToPlayer(currentPlayer, playerCurrentPosition);
+                Board.AddStreetToPlayer(playerCurrentPosition, currentPlayer);
                 EntryPoint.Game.renderer.ShowTileOwner(currentPlayer, playerCurrentPosition);
                 EntryPoint.Game.renderer.PlayerOneMoney = Board.players[0].Money + "$";
                 EntryPoint.Game.renderer.PlayerTwoMoney = Board.players[1].Money + "$";

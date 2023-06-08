@@ -16,7 +16,7 @@ namespace MonopolyGame.View.Tiles
             Texture2D buyActive = content.Load<Texture2D>("Buy");
             Texture2D buyClicked = content.Load<Texture2D>("BuyClicked");
             Texture2D buyHover = content.Load<Texture2D>("BuyHover");
-            Rectangle buyRectangle = new Rectangle(450, 450, 80, 80);
+            Rectangle buyRectangle = new Rectangle(370, 450, 80, 80);
 
             Sprite buyButtonSprite = new Sprite(buyRectangle, buyActive);
 
@@ -27,8 +27,8 @@ namespace MonopolyGame.View.Tiles
         {
             Texture2D rollActive = content.Load<Texture2D>("Roll");
             Texture2D rollClicked = content.Load<Texture2D>("RollClicked");
-            Texture2D rollHover = content.Load<Texture2D>("RollActive");
-            Rectangle rollRectangle = new Rectangle(300, 450, 120, 120);
+            Texture2D rollHover = content.Load<Texture2D>("RollHover");
+            Rectangle rollRectangle = new Rectangle(275, 450, 80, 80);
 
             Sprite rollButtonSprite = new Sprite(rollRectangle, rollActive);
 
@@ -37,14 +37,12 @@ namespace MonopolyGame.View.Tiles
 
         public static Button CreateEndTurnButton(ContentManager content)
         {
-            Texture2D endTurnActive = content.Load<Texture2D>("Roll");
-            Texture2D endTurnClicked = content.Load<Texture2D>("RollClicked");
-            Texture2D endTurnHover = content.Load<Texture2D>("RollActive");
-            Rectangle endTurnRectangle = new Rectangle(400, 515, 80, 80);
+            Texture2D endTurnActive = content.Load<Texture2D>("EndTurn");
+            Rectangle endTurnRectangle = new Rectangle(310, 535, 100, 24);
 
             Sprite endTurnButtonSprite = new Sprite(endTurnRectangle, endTurnActive);
 
-            return new Button(endTurnButtonSprite, endTurnHover, endTurnClicked, endTurnActive);
+            return new Button(endTurnButtonSprite, endTurnActive, endTurnActive, endTurnActive);
         }
 
         public static Dice CreateDice(ContentManager content, int index)
@@ -54,7 +52,7 @@ namespace MonopolyGame.View.Tiles
             {
                 diceImages[i] = content.Load<Texture2D>((i + 1).ToString());
             }
-            Rectangle diceRectangle = new Rectangle(298 + index * 32, 560, 30, 30);
+            Rectangle diceRectangle = new Rectangle(298 + index * 32, 570, 30, 30);
             Sprite diceSprite = new Sprite(diceRectangle, diceImages[0]);
             return new Dice(diceSprite, diceImages);
         }
@@ -81,10 +79,10 @@ namespace MonopolyGame.View.Tiles
 
         public static TileOwnerNotification[] CreateTileOwnerNotifications(ContentManager content)
         {
-            int xIncrement = 57;
+            int xIncrement = 56;
             TileOwnerNotification[] tileNotifications = new TileOwnerNotification[28];
             Texture2D ownerOneImage = content.Load<Texture2D>("Owner1");
-            tileNotifications[0] = new TileOwnerNotification(0, CreateNotificationSprite(0, xIncrement, ownerOneImage));
+            tileNotifications[0] = new TileOwnerNotification(1, CreateNotificationSprite(1, xIncrement, ownerOneImage));
             tileNotifications[1] = new TileOwnerNotification(3, CreateNotificationSprite(3, xIncrement, ownerOneImage));
             tileNotifications[2] = new TileOwnerNotification(5, CreateNotificationSprite(5, xIncrement, ownerOneImage));
             tileNotifications[3] = new TileOwnerNotification(6, CreateNotificationSprite(6, xIncrement, ownerOneImage));
@@ -166,16 +164,16 @@ namespace MonopolyGame.View.Tiles
         {
             if(index / 10 == 0)
             {
-                return new Sprite(new Rectangle(607 - xIncrement * index, 607, 15, 15), notificationImage);
+                return new Sprite(new Rectangle(615 - xIncrement * index, 603, 25, 25), notificationImage);
             } else if (index / 10 == 1)
             {
-                return new Sprite(new Rectangle(0, 607 - xIncrement * (index % 10), 15, 15), notificationImage);
+                return new Sprite(new Rectangle(75, 615 - xIncrement * (index % 10), 25, 25), notificationImage);
             } else if (index / 10 == 2)
             {
-                return new Sprite(new Rectangle(93 + xIncrement * ((index % 20) - 1), 0, 15, 15), notificationImage);
+                return new Sprite(new Rectangle(65 + xIncrement * (index % 20), 75, 25, 25), notificationImage);
             } else
             {
-                return new Sprite(new Rectangle(607, 93 + xIncrement * ((index % 30) - 1), 15, 15), notificationImage);
+                return new Sprite(new Rectangle(600, 60 + xIncrement * (index % 30), 25, 25), notificationImage);
             }
         }
     }

@@ -13,8 +13,13 @@ namespace MonopolyGame.Controller.States
 
         public override void Execute()
         {
+            if(Board.players[Board.CurrentPlayerIndex].TurnsInJail != 0)
+            {
+                Board.players[Board.CurrentPlayerIndex].TurnsInJail--;
+                Board.CurrentPlayerIndex = (Board.CurrentPlayerIndex + 1) % Board.players.Count;
+            }
             Button rollButton = EntryPoint.Game.renderer.RollButton;
-            EntryPoint.Game.renderer.NotificationText = "Ход " + (Board.CurrentPlayerIndex + 1) + "'го игрока";
+            EntryPoint.Game.renderer.NotificationText = "Ход " + (Board.CurrentPlayerIndex + 1).ToString() + "'го игрока";
 
             bool mouseOverRoll = rollButton.sprite.Rectangle.Contains(Mouse.GetState().X, Mouse.GetState().Y);
             if (mouseOverRoll)

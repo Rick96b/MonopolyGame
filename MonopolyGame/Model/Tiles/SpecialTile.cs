@@ -20,19 +20,20 @@ namespace MonopolyGame.Model.Tiles
             if (this.Index == 0)
             {
                 player.IncrementMoney(200);
-                return "Ты прошел начало круга.\nПолучи 200$";
+                return "\nТы прошел начало круга.\nПолучи 200$";
             }
             else if (this.Index == 10)
             {
-                return "Ты посетил тюрьму";
+                return "\nТы посетил тюрьму";
             }
             else if (this.Index == 20)
             {
-                return "Бесплатная стоянка. \n Ничего не произошло";
+                return "\nБесплатная стоянка. \n Ничего не произошло";
             }
             else
             {
-                return "Ты попал в тюрьму! \nТы пропустишь следующие 3 хода";
+                player.TurnsInJail = 3;
+                return "\nТы попал в тюрьму! \nТы пропустишь следующие 3 хода";
             }
         }
     }
